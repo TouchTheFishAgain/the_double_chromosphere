@@ -1,6 +1,8 @@
 package example.ljava.entity;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -11,7 +13,8 @@ import lombok.Data;
 @Data
 public class BicolorBall {
     @Id
-    Integer id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    Long id;
 
     Integer num1;
     Integer num2;
