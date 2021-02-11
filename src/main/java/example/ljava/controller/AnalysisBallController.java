@@ -17,12 +17,13 @@ import org.apache.commons.beanutils.BeanUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import example.ljava.entity.AnalysisBallForm;
-import example.ljava.entity.BicolorBall;
-import example.ljava.entity.QBicolorBall;
+import example.ljava.entity.po.BicolorBall;
+import example.ljava.entity.po.QBicolorBall;
+import example.ljava.entity.vo.AnalysisBallForm;
 import example.ljava.repository.BicolorBallRepository;
 import example.ljava.util.Result;
 import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
 
@@ -39,6 +40,7 @@ class AnalysisBallController {
     BicolorBallRepository ballresp;
 
     @RequestMapping("get")
+    @ApiOperation(httpMethod = "GET", value = "统计一百期号码出现情况归类")
     public Object get(
         @NotEmpty String stageStart,
         @NotEmpty String stageEnd

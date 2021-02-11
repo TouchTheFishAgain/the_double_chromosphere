@@ -26,9 +26,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import example.ljava.entity.BicolorBall;
-import example.ljava.entity.BicolorBallForm;
-import example.ljava.entity.QBicolorBall;
+import example.ljava.entity.po.BicolorBall;
+import example.ljava.entity.po.QBicolorBall;
+import example.ljava.entity.vo.BicolorBallForm;
 import example.ljava.repository.BicolorBallRepository;
 import example.ljava.util.Result;
 import io.swagger.annotations.Api;
@@ -53,8 +53,9 @@ public class BicolorBallController {
         QBicolorBall qBicolorBall = QBicolorBall.bicolorBall;
 
         List<BooleanExpression> conditions = Lists
-                .newArrayList(id != null ? qBicolorBall.id.eq(id) : null,
-                        stage != null ? qBicolorBall.stage.equalsIgnoreCase(stage) : null)
+                .newArrayList(
+                    id != null ? qBicolorBall.id.eq(id) : null,
+                    stage != null ? qBicolorBall.stage.equalsIgnoreCase(stage) : null)
                 .stream().filter(m -> m != null).collect(Collectors.toList());
 
         Predicate query = conditions.size() > 0 ? conditions.stream().skip(1).reduce(conditions.get(0),

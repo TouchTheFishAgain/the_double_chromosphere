@@ -1,4 +1,4 @@
-package example.ljava.entity;
+package example.ljava.entity.vo;
 
 import javax.validation.Valid;
 import javax.validation.constraints.NotEmpty;
